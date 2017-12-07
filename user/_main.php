@@ -14,6 +14,8 @@ require_once '_check.php';
     <link href="https://cdn.bootcss.com/admin-lte/2.3.11/css/AdminLTE.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/admin-lte/2.3.11/css/skins/_all-skins.min.css" rel="stylesheet">
     <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link href="//cdn.staticfile.org/webuploader/0.1.5/webuploader.css" rel="stylesheet">
+    <script src="//cdn.staticfile.org/webuploader/0.1.5/webuploader.js"></script>
 </head>
 <body class="skin-blue">
 <!-- Site wrapper -->

@@ -23,7 +23,9 @@ require_once '_main.php'; ?>
                         <div class="box-body">
                             <p>用户名：<?php echo $U->GetUserName(); ?></p>
                             <p>邮箱：<?php echo $user_email; ?></p>
+                            <?php if(!$isLan){ ?>
                             <p><a class="btn btn-danger btn-sm" href="kill.php">删除我的账户</a></p>
+                            <?php } ?>
                         </div><!-- /.box -->
                     </div>
                 </div>

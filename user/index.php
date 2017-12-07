@@ -25,7 +25,7 @@ $prefix=$U->GetPrefix();
                         </div>
                     </div>
                     <div >
-                        <button id="upload" type="button" class="btn btn-info">上传文件</button>
+                        <div id="upload" class="">上传文件</div>
                         <button id="cancel" type="button" class="btn btn-danger" style="display: none;">取消上传</button>
                         <button id="del" type="button" class="btn btn-danger" style="display: none;">批量删除</button>
                     </div>
@@ -85,15 +85,47 @@ $(document).ready(function(){
         allUpdateFile=$("#file")[0].files.length;
         uploadFile(0);
     });
+/*    
     $("#upload").click(function(){
         if($("#container").is(':visible') == false)
             $("#file").trigger('click');
         else
             $("#msg-loading").show();
     });
+*/
     $("#del").click(function(){
         delFile();
     });
+
+    var uploader = WebUploader.create({
+        auto: true,
+        swf: '//cdn.staticfile.org/webuploader/0.1.5/Uploader.swf',
+        server: '/user/_upload.php',
+        pick: '#upload',
+        resize: false
+    });
+    uploader.on('startUpload',function(){
+        $("#container").show();
+        $("#cancel").show();
+        $("#cancel").click(function(){
+            $('#container').hide(100);
+            $('#cancel').hide(100);
+        });
+    });
+    uploader.on('uploadProgress', function( file, percentage ) {
+        console.log(file);
+        var valeur= (percentage * 100 | 0);
+        $('#fileProgress').css('width', valeur+'%').attr('aria-valuenow', valeur);
+        $('#fileProgress').html(file.name+":"+valeur+'%');
+    });
+    uploader.on('uploadError', function( file ) {
+        $("#msg-error").show();
+    });     
+    uploader.on('uploadFinished', function( file ) {
+        $('#container').hide(500);
+        $('#cancel').hide(500);
+        location.reload();
+    });    
 });
 function showMult(ele){
     if(ele.checked)

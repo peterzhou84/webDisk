@@ -4,7 +4,8 @@ require_once '_check.php';
 
 
 use \Ss\File\FileManager;
-$fm=new FileManager($U->GetUid());
+use \Ss\File\DiskFileManager;
+$fm=$isLan?new DiskFileManager($U->GetUid()):new FileManager($U->GetUid());
 
 $file=$_POST['file'];
 $ret=true;

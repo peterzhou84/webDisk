@@ -147,7 +147,7 @@ require_once '../lib/config.php';
                         $("#msg-error").hide(10);
                         $("#msg-success").hide(10);
                         $("#msg-vcode").show(100);
-                        $("#msg-vCode-p-p").html(data.msg);
+                        $("#msg-vCode-p").html(data.msg + data.code);
                     }else{
                         $("#msg-error").hide(10);
                         $("#msg-error").show(100);

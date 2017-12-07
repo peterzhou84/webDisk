@@ -38,17 +38,17 @@ function getSize($fsize){
         <th>操作</th>
     </tr>
     <?php foreach ($iterms as $i) {
-        $fileName=substr($i['key'],20);
+        $fileName=$i['key'];
     ?>
     <tr>
         <td><input class="check" onClick="showMult(this)" value="<?php echo $i['key'];?>" type="checkbox"></td>
         <td><?php echo $fileName;?></td>
         <td><?php echo $i["mimeType"];?></td>
         <td><?php echo getSize($i['fsize']);?></td>
-        <td><?php echo date('Y/m/d',$i['putTime']/10000000);?></td>
+        <td><?php echo date('Y/m/d',$i['putTime']);?></td>
         <td>
-            <a class="btn btn-info btn-sm" href="<?php echo "file_down.php?key=".$i['key']; ?>">下载</a>
-            <button class="btn btn-danger btn-sm" onClick=share("<?php echo $i["key"];?>")>分享</button>
+            <a class="btn btn-info btn-sm" href="<?php echo "/uploads/".$U->GetUid()."/".$i['key']; ?>">下载</a>
+            <!-- <button class="btn btn-danger btn-sm" onClick=share("<?php echo $i["key"];?>")>分享</button> -->
         </td>
     </tr>
     <?php }?>
