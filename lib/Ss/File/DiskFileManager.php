@@ -25,7 +25,8 @@ class DiskFileManager{
 			return false;
 		$uid=$data[0]['uid'];
 		if($uid==$this->uid){
-			$this->db->delete('file',['key'=>$key]);
+            $this->db->delete('file',['key'=>$key]);
+            @unlink($_SERVER['DOCUMENT_ROOT']."/uploads/".$uid."/".$key);
 			return true;
 		}else
 			return false;
